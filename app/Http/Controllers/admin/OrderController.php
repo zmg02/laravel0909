@@ -17,4 +17,24 @@ class OrderController extends Controller
         
         return view('admin/order/index',compact('orderData'));
     }
+
+    public function goods()
+    {
+
+    }
+
+    public function preview()
+    {
+
+    }
+
+    public function setStatus()
+    {
+
+    }
+
+    public function exportCsv()
+    {
+        
+    }
 }
