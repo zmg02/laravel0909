@@ -20,7 +20,7 @@ class OrderController extends Controller
 
     public function goods()
     {
-
+        return view('admin/order/goods');
     }
 
     public function preview()
@@ -35,6 +35,6 @@ class OrderController extends Controller
 
     public function exportCsv()
     {
-        
+
     }
 }
