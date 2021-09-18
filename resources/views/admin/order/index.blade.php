@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <title>Document</title>
     <style type="text/css">
         #pull_right{
@@ -82,6 +81,17 @@
     </style>
 </head>
 <body>
+    <form action="" method="get">
+        @csrf
+        <input type="text" name='keywords' value="">
+        <select name="status">
+            <option value="">--请选择订单状态--</option>
+            @foreach ($status['status'] as $key=>$val)
+            <option value="{{$key}}">{{$val}}</option>
+            @endforeach
+        </select>
+        <button type="submit">搜 索</button>
+    </form>
     <table border="1px" style="padding:5px;">
         <thead>
             <tr>
@@ -98,7 +108,7 @@
             <tr>
                 <td>{{$order->order_sn}}</td>
                 <td>{{$order->uid}}</td>
-                <td>{{$order->status}}</td>
+                <td>{{$status['status'][$order->status]}}</td>
                 <td>{{date('Y-m-d H:i:s',$order->checkout_time)}}</td>
                 <td>￥{{$order->payment}}</td>
                 <td>{{$order->tracking_number}}</td>
