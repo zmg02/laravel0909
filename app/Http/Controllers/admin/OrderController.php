@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 
 class OrderController extends Controller
 {
@@ -15,20 +16,25 @@ class OrderController extends Controller
         $orderObj = new Order();
         $orderData =  $orderObj->where($map)->paginate(10);
         
-        return view('admin/order/index',compact('orderData'));
+        //order status
+        $status = Config::get('order');
+
+
+        return view('admin/order/index',compact('orderData','status'));
     }
 
-    public function goods()
+    public function goods($orderId)
     {
+        echo $orderId;
         return view('admin/order/goods');
     }
 
-    public function preview()
+    public function preview($orderId)
     {
-
+        
     }
 
-    public function setStatus()
+    public function setStatus($orderId)
     {
 
     }
